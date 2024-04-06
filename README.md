@@ -1,4 +1,4 @@
-# High Performance Speed Search REST API
+# High Performance REST API
 Globally distributed high-performance REST API using:
 
 Cloudflare Workers
