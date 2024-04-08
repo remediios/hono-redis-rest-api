@@ -37,14 +37,18 @@ export default function Home() {
   return (
     <main className="h-screen w-screen grainy">
       <div className="flex flex-col gap-6 items-center pt-32 duration-500 animate-in animate fade-in slide-in-from-bottom-2.5">
-        <h1 className="text-5xl tracking-tight font-bold">
-          ⚡️ Hono Redis API
-        </h1>
+        <div className="flex flex-col items-center gap-y-3">
+          <h1 className="text-5xl tracking-tight font-bold">Hono ⚡️ Redis</h1>
+          <h4 className="text-2xl tracking-tight font-bold bg-gradient-to-r from-yellow-400 via-yellow-400  to-orange-300 text-transparent bg-clip-text ">
+            REST API
+          </h4>
+        </div>
+
         <p className="text-zinc-600 text-md max-w-prose text-center">
           Globally distributed high-performance REST API for speed search
           <br /> Type a query below and get your results in miliseconds.
         </p>
-        <div className="max-w-md w-full">
+        <div className="max-w-md w-full ">
           <Command className="rounded-xl border shadow-md">
             <CommandInput
               value={input}
