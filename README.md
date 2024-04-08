@@ -11,3 +11,5 @@ NextJS
 
 Redis zstack data structure to split each country word into several substring from 0 to i, being i a character and index+1 of a term until the end where a \* is added to the last word.
 This is done to match a query substring to the nearest country word/complete term, the one with a \*.
+
+.env and wrangler.toml for Cloudflare Workers

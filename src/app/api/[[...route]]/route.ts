@@ -26,7 +26,7 @@ app.get('/search', async (c) => {
       url: UPSTASH_REDIS_REST_URL,
     });
 
-    const query = c.req.query('q');
+    const query = c.req.query('q')?.toUpperCase();
 
     if (!query)
       return c.json({ message: 'Invalid search query' }, { status: 400 });
