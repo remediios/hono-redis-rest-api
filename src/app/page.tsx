@@ -6,7 +6,6 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
   CommandGroup,
 } from '@/components/ui/command';
 import { useEffect, useState } from 'react';
@@ -22,7 +21,9 @@ export default function Home() {
     const fetchData = async () => {
       if (!input) return setSearchResults(undefined);
 
-      const response = await fetch(`/api/search?q=${input}`);
+      const response = await fetch(
+        `https://hono-redis-rest-api.remedios.workers.dev/api/search?q=${input}`
+      );
       const data = (await response.json()) as {
         results: string[];
         duration: number;

@@ -1,11 +1,13 @@
-import { Redis } from '@upstash/redis';
+import { Redis } from '@upstash/redis/cloudflare';
 import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { handle } from 'hono/vercel';
+import { cors } from 'hono/cors';
 
 export const runtime = 'edge';
 
 const app = new Hono().basePath('/api');
+app.use('/*', cors());
 
 type EnvConfig = {
   UPSTASH_REDIS_REST_TOKEN: string;
