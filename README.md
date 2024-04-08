@@ -13,3 +13,5 @@ Redis zstack data structure to split each country word into several substring fr
 This is done to match a query substring to the nearest country word/complete term, the one with a \*.
 
 .env and wrangler.toml for Cloudflare Workers
+
+Used Cloudflare workers to deploy the holojs REST API, used Upstash to get a serveless cloud redis database, vercel to deploy the front end, nextjs as the frontend micro framework
