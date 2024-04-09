@@ -19,10 +19,16 @@ interface ISearchBar {
         duration: number;
       }
     | undefined;
+  setSelectedResult: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchBar = ({ input, setInput, searchResults }: ISearchBar) => {
-  const [selectedResult, setSelectedResult] = useState(false);
+const SearchBar = ({
+  input,
+  setInput,
+  searchResults,
+  setSelectedResult,
+}: ISearchBar) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="max-w-md w-full ">
       <Command className="rounded-xl border shadow-md">
@@ -30,13 +36,13 @@ const SearchBar = ({ input, setInput, searchResults }: ISearchBar) => {
           value={input}
           onValueChange={(e) => {
             setInput(e);
-            setSelectedResult(false);
+            setIsOpen(false);
           }}
           placeholder="Search countries..."
           className="placeholder:text-zinc-500"
         />
         <CommandList>
-          {searchResults?.results.length === 0 && !selectedResult ? (
+          {searchResults?.results.length === 0 && !isOpen ? (
             <CommandEmpty>No results found.</CommandEmpty>
           ) : null}
           {searchResults?.results ? (
@@ -47,7 +53,8 @@ const SearchBar = ({ input, setInput, searchResults }: ISearchBar) => {
                   value={result}
                   onSelect={(e) => {
                     setInput(e);
-                    setSelectedResult(true);
+                    setIsOpen(true);
+                    setSelectedResult(e);
                   }}
                 >
                   <p>{result}</p>
@@ -55,12 +62,12 @@ const SearchBar = ({ input, setInput, searchResults }: ISearchBar) => {
               ))}
             </CommandGroup>
           ) : null}
-          {searchResults?.results && !selectedResult ? (
+          {searchResults?.results && !isOpen ? (
             <>
               <div className="h-px w-full bg-zinc-200" />
               <p className="p-2 text-xs text-zinc-500">
                 Found {searchResults.results.length} results in{' '}
-                {searchResults.duration.toFixed(0)}ms
+                {searchResults.duration?.toFixed(0)}ms
               </p>
             </>
           ) : null}

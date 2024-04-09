@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import SearchBar from './components/SearchBar';
 import HeaderInfo from './components/HeaderInfo';
+import Result from './components/Result';
 
 export default function Home() {
   const [input, setInput] = useState<string>('');
@@ -10,6 +11,7 @@ export default function Home() {
     results: string[];
     duration: number;
   }>();
+  const [selectedResult, setSelectedResult] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +38,9 @@ export default function Home() {
           input={input}
           setInput={setInput}
           searchResults={searchResults}
+          setSelectedResult={setSelectedResult}
         />
+        {selectedResult && <Result selectedResult={selectedResult} />}
       </div>
     </main>
   );
