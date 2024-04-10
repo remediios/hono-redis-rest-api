@@ -17,3 +17,5 @@ This is done to match a query substring to the nearest country word/complete ter
 Used Cloudflare workers to deploy the holojs REST API, used Upstash to get a serveless cloud redis database, vercel to deploy the front end, nextjs as the frontend micro framework
 
 https://hono-redis-rest-api.remedios.workers.dev
+
+Added a Rate Limiting Functionality and cache service to avoid server overloading
