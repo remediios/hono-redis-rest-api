@@ -31,7 +31,7 @@ export default function Home() {
         setSearchResults(data);
 
         if (response.status === 429) {
-          setCooldown(10);
+          setCooldown(20);
           // If the rate limit is exceeded, throw an error with the message
           throw new Error('Rate limit exceeded');
         }

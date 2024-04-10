@@ -19,4 +19,4 @@ Used Cloudflare workers to deploy the holojs REST API, used Upstash to get a ser
 https://hono-redis-rest-api.remedios.workers.dev
 
 Added a Rate Limiting Functionality and cache service to avoid server overloading
-Rate limte of 30s and 10s cooldown mechanism implemented
+Rate limte of 20s and 20s cooldown mechanism implemented

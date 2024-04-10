@@ -41,7 +41,7 @@ class RedisRateLimiter {
 
       const rateLimit = new Ratelimit({
         redis: this.redisClient,
-        limiter: Ratelimit.slidingWindow(30, '30 s'),
+        limiter: Ratelimit.slidingWindow(20, '20 s'),
         ephemeralCache: cache,
       });
 
