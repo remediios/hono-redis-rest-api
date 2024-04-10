@@ -18,7 +18,7 @@ export default function Home() {
       if (!input) return setSearchResults(undefined);
 
       const response = await fetch(
-        `http://localhost:3000/api/search?q=${input}`
+        `https://hono-redis-rest-api.remedios.workers.dev/api/search?q=${input}`
       );
       const data = (await response.json()) as {
         results: string[];
