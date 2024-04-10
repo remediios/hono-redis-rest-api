@@ -20,6 +20,7 @@ interface ISearchBar {
       }
     | undefined;
   setSelectedResult: React.Dispatch<React.SetStateAction<string>>;
+  cooldown: number;
 }
 
 const SearchBar = ({
@@ -27,19 +28,27 @@ const SearchBar = ({
   setInput,
   searchResults,
   setSelectedResult,
+  cooldown,
 }: ISearchBar) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleInputChange = (e: string) => {
+    if (cooldown <= 0) {
+      setInput(e);
+      setIsOpen(false);
+    }
+  };
+
   return (
     <div className="max-w-md w-full ">
       <Command className="rounded-xl border shadow-md">
         <CommandInput
           value={input}
-          onValueChange={(e) => {
-            setInput(e);
-            setIsOpen(false);
-          }}
+          onValueChange={(e) => handleInputChange(e)}
           placeholder="Search countries..."
-          className="placeholder:text-zinc-500"
+          className={`placeholder:text-zinc-500 ${
+            cooldown > 0 ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
         />
         <CommandList>
           {searchResults?.results.length === 0 && !isOpen ? (
